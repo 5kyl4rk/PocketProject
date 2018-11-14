@@ -7,7 +7,6 @@ public class PocketMonster
 	private String type;
 	private int lvl;
 	private ArrayList<String> natures;
-	private ArrayList<String> waterWeak;
 
 	// default constructor
 	public PocketMonster()
