@@ -12,7 +12,7 @@ public class PocketController
 	public PocketController()
 	{
 		pikachu = new PocketMonster();
-		squirtle = new PocketMonster("Squirtle", "Water", 14, "SquirtleGang");
+		squirtle = new PocketMonster("Squirtle", "Water", 14, "SquirtleSquad");
 		charizard = new PocketMonster("Charizard", "Fire - Flying", 60, "Burnt Shakes");
 	}
 	

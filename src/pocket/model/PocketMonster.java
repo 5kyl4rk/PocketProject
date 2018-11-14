@@ -7,7 +7,7 @@ public class PocketMonster
 	private String type;
 	private int lvl;
 	private ArrayList<String> natures;
-	
+	private ArrayList<String> waterWeak;
 
 	// default constructor
 	public PocketMonster()
@@ -24,7 +24,7 @@ public class PocketMonster
 	{
 		this.name = name;
 		this.type = type;
-		this.lvl = lvl;
+		this.lvl = checkLevel(lvl);
 		this.nickname = name.toUpperCase();
 		buildList();
 	}
@@ -33,7 +33,7 @@ public class PocketMonster
 	{
 		this.name = name;
 		this.type = type;
-		this.lvl = lvl;
+		this.lvl = checkLevel(lvl);
 		this.nickname = nickname;
 		buildList();
 
@@ -42,6 +42,7 @@ public class PocketMonster
 	private void buildList()
 	{
 		natures = new ArrayList<String>();
+		
 		//--[Natures]--
 		natures.add("Hardy");
 		natures.add("Lonely");
@@ -68,6 +69,22 @@ public class PocketMonster
 		natures.add("Jolly");
 		natures.add("Naive");
 		natures.add("Serious");
+	}
+	
+	private int checkLevel(int level)
+	{
+		int currentLevel = level;
+		if(level > 100)
+		{
+			currentLevel = 100;
+		}
+		if(level < 1)
+		{
+			currentLevel = 1;
+		}
+		
+		return currentLevel;
+		
 	}
 	private boolean isShiny()
 	{
@@ -97,7 +114,7 @@ public class PocketMonster
 			shiny = "* SHINY *";
 		}
 		String pokedex = "[\""+nickname+"\"\t" +  "Lvl. "+ lvl+ "]\n"+
-							shiny + name + "\n" + type + "\n" +
+							shiny + name + "\nType: " + type + "\nNature: " +
 							pickNature();
 		
 		return pokedex;
