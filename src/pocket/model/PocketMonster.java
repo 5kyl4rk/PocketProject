@@ -6,6 +6,7 @@ public class PocketMonster
 	private String nickname;
 	private String type;
 	private int lvl;
+	private boolean hasFainted;
 	private ArrayList<String> natures;
 
 	// default constructor
@@ -15,6 +16,8 @@ public class PocketMonster
 		this.nickname = name.toUpperCase();
 		this.type = "Electric";
 		this.lvl = 30;
+		this.hasFainted = false;
+		natures = new ArrayList<String>();
 		
 		buildList();
 	}
@@ -25,6 +28,8 @@ public class PocketMonster
 		this.type = type;
 		this.lvl = checkLevel(lvl);
 		this.nickname = name.toUpperCase();
+		natures = new ArrayList<String>();
+		
 		buildList();
 	}
 
@@ -34,13 +39,15 @@ public class PocketMonster
 		this.type = type;
 		this.lvl = checkLevel(lvl);
 		this.nickname = nickname;
+		natures = new ArrayList<String>();
+		
 		buildList();
 
 	}
 	
 	private void buildList()
 	{
-		natures = new ArrayList<String>();
+		
 		
 		//--[Natures]--
 		natures.add("Hardy");
