@@ -21,7 +21,7 @@ public class PocketController
 		squirtle = new PocketMonster("Squirtle", "Water", 14, "SquirtleSquad");
 		charizard = new PocketMonster("Charizard", "Fire - Flying", 60, "Burnt Shakes");
 		
-		icons = new ImageIcon[5];
+		icons = new ImageIcon[13];
 		
 		icons[0] = new ImageIcon(getClass().getResource("/pocket/view/images/pokeball.png"));
 		icons[1] = new ImageIcon(getClass().getResource("/pocket/view/images/greatBall.png"));
@@ -39,6 +39,7 @@ public class PocketController
 		displayParty();
 		//makeParty();
 	}
+	
 	private void intializeArray()
 	{
 		pocketArray[0] = pikachu;
