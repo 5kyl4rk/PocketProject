@@ -21,7 +21,7 @@ public class PocketController
 		squirtle = new PocketMonster("Squirtle", "Water", 14, "SquirtleSquad");
 		charizard = new PocketMonster("Charizard", "Fire - Flying", 60, "Burnt Shakes");
 		
-		icons = new ImageIcon[6];
+		icons = new ImageIcon[5];
 		
 		icons[0] = new ImageIcon(getClass().getResource("/pocket/view/images/pokeball.png"));
 		icons[1] = new ImageIcon(getClass().getResource("/pocket/view/images/greatBall.png"));
@@ -34,14 +34,31 @@ public class PocketController
 	
 	public void start()
 	{
-		JOptionPane.showMessageDialog(null, pikachu, pikachu.getName(),JOptionPane.INFORMATION_MESSAGE, icons[0]);
+		//JOptionPane.showMessageDialog(null, pikachu, pikachu.getName(),JOptionPane.INFORMATION_MESSAGE, icons[0]);
+		intializeArray();
+		displayParty();
 		//makeParty();
 	}
-	private void arrayInitalization()
+	private void intializeArray()
 	{
+		pocketArray[0] = pikachu;
+		pocketArray[1] = charizard;
+		pocketArray[2] = squirtle;
 		
 	}
-	public void makeParty()
+	
+	private void displayParty()
+	{
+		for(PocketMonster currentItem : pocketArray)
+		{
+			int pickRandom = (int) (Math.random() * icons.length);
+			if(currentItem != null)
+			{
+			JOptionPane.showMessageDialog(null, currentItem, currentItem.getName(), JOptionPane.INFORMATION_MESSAGE, icons[pickRandom]);
+			}
+		}
+	}
+	public void makePartyList()
 	{
 		ArrayList<PocketMonster> party = new ArrayList<PocketMonster>();
 		
