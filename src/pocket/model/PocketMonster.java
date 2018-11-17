@@ -7,7 +7,9 @@ public class PocketMonster
 	private String type;
 	private int lvl;
 	private boolean hasFainted;
-	private ArrayList<String> natures;
+	private String nature;
+	private ArrayList<String> natureList;
+	
 
 	// default constructor
 	public PocketMonster()
@@ -17,9 +19,24 @@ public class PocketMonster
 		this.type = "Electric";
 		this.lvl = 30;
 		this.hasFainted = false;
-		natures = new ArrayList<String>();
+		natureList = new ArrayList<String>();
 		
 		buildList();
+		this.nature = pickNature();
+		
+	}
+	
+	public PocketMonster(String name, String type)
+	{
+		this.name = name;
+		this.nickname = name.toUpperCase();
+		this.type = type;
+		this.lvl = checkLevel((int)(Math.random()*100));
+		this.hasFainted = false;
+		natureList = new ArrayList<String>();
+		
+		buildList();
+		this.nature = pickNature();
 	}
 
 	public PocketMonster(String name, String type, int lvl)
@@ -28,9 +45,10 @@ public class PocketMonster
 		this.type = type;
 		this.lvl = checkLevel(lvl);
 		this.nickname = name.toUpperCase();
-		natures = new ArrayList<String>();
+		natureList = new ArrayList<String>();
 		
 		buildList();
+		this.nature = pickNature();
 	}
 
 	public PocketMonster(String name, String type, int lvl, String nickname)
@@ -39,44 +57,49 @@ public class PocketMonster
 		this.type = type;
 		this.lvl = checkLevel(lvl);
 		this.nickname = nickname;
-		natures = new ArrayList<String>();
+		natureList = new ArrayList<String>();
 		
 		buildList();
+		this.nature = pickNature();
 
 	}
 	
 	private void buildList()
 	{
 		
+		//--[natureList]--
+		natureList.add("Hardy");
+		natureList.add("Lonely");
+		natureList.add("Adamant");
+		natureList.add("Naughty");
+		natureList.add("Brave");
+		natureList.add("Bold");
+		natureList.add("Docile");
+		natureList.add("Impish");
+		natureList.add("Lax");
+		natureList.add("Relaxed");
+		natureList.add("Modest");
+		natureList.add("Mild");
+		natureList.add("Bashful");
+		natureList.add("Rash");
+		natureList.add("Quiet");
+		natureList.add("Calm");
+		natureList.add("Gentle");
+		natureList.add("Careful");
+		natureList.add("Quirky");
+		natureList.add("Sassy");
+		natureList.add("Timid");
+		natureList.add("Hasty");
+		natureList.add("Jolly");
+		natureList.add("Naive");
+		natureList.add("Serious");
 		
-		//--[Natures]--
-		natures.add("Hardy");
-		natures.add("Lonely");
-		natures.add("Adamant");
-		natures.add("Naughty");
-		natures.add("Brave");
-		natures.add("Bold");
-		natures.add("Docile");
-		natures.add("Impish");
-		natures.add("Lax");
-		natures.add("Relaxed");
-		natures.add("Modest");
-		natures.add("Mild");
-		natures.add("Bashful");
-		natures.add("Rash");
-		natures.add("Quiet");
-		natures.add("Calm");
-		natures.add("Gentle");
-		natures.add("Careful");
-		natures.add("Quirky");
-		natures.add("Sassy");
-		natures.add("Timid");
-		natures.add("Hasty");
-		natures.add("Jolly");
-		natures.add("Naive");
-		natures.add("Serious");
+		
+		
+		
 	}
 	
+
 	private int checkLevel(int level)
 	{
 		int currentLevel = level;
@@ -106,8 +129,8 @@ public class PocketMonster
 	
 	private String pickNature()
 	{
-		int pickRandom = (int) (Math.random() * natures.size());
-		String nature = natures.get(pickRandom);
+		int pickRandom = (int) (Math.random() * natureList.size());
+		String nature = natureList.get(pickRandom);
 		
 		return nature;
 	}
@@ -117,11 +140,11 @@ public class PocketMonster
 		String shiny = "";
 		if(isShiny())
 		{
-			shiny = "* SHINY *";
+			shiny = "* SHINY *\n";
 		}
-		String pokedex = "[\""+nickname+"\"\t" +  "Lvl. "+ lvl+ "]\n"+
-							shiny + name + "\nType: " + type + "\nNature: " +
-							pickNature();
+		String pokedex = nickname +  "\nLvl. "+ lvl+ "\n"+
+							shiny + "Type: " + "|" + type + "|" + "\nNature: " +
+							"|" +nature+"|";
 		
 		return pokedex;
 	}
@@ -143,6 +166,10 @@ public class PocketMonster
 	{
 		return lvl;
 	}
+	public String getNature()
+	{
+		return nature;
+	}
 	
 	//--[SET]--
 	public void setName(String name)
@@ -160,6 +187,10 @@ public class PocketMonster
 	public void setLvl(int lvl)
 	{
 		this.lvl = lvl;
+	}
+	public void setNature(String nature)
+	{
+		this.nature = nature;
 	}
 
 }
